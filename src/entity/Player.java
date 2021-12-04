@@ -18,7 +18,7 @@ public class Player extends Entity {
     public final int screenY;
 
 
-private float timer = 10;
+private final float timer = 10;
     public int status1 = 10;
 Integer integer = status1;
 
@@ -52,7 +52,7 @@ screenY = gp.screenHeight/2 - (gp.tilesize/2);
             down2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/res/player/boy_down_2.png")));
             left1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/res/player/boy_left_1.png")));
             left2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/res/player/boy_left_2.png")));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/res/player/boy_right_1.png"));
+            right1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/res/player/boy_right_1.png")));
             right2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/res/player/boy_right_2.png")));
 
         }catch (IOException e){
@@ -68,14 +68,6 @@ screenY = gp.screenHeight/2 - (gp.tilesize/2);
 
 
 if (keyH.speedy){
-
-
-
-
-
-
-
-
 
 
 
