@@ -8,11 +8,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Objects;
 
 public class TileManager {
     GamePanel gp;
     Tile[] tile;
-    int mapTileNum[][];
+    int[][] mapTileNum;
 
     public TileManager(GamePanel gp){
         this.gp = gp;
@@ -28,30 +29,26 @@ public class TileManager {
         try{
 
             tile[0] = new Tile();
-            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/Textures/watert0.png"));
+            tile[0].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Textures/watert0.png")));
 
             tile[1] = new Tile();
-            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/Textures/wall.png"));
+            tile[1].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Textures/wall.png")));
 
             tile[2] = new Tile();
-            tile[2].image = ImageIO.read(getClass().getResourceAsStream("/Textures/watert4.png"));
+            tile[2].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Textures/watert4.png")));
 
             tile[3] = new Tile();
-            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/Textures/earth.png"));
+            tile[3].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Textures/earth.png")));
 
             tile[5] = new Tile();
-            tile[5].image = ImageIO.read(getClass().getResourceAsStream("/Textures/sand.png"));
+            tile[5].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Textures/sand.png")));
 
             tile[4] = new Tile();
-            tile[4].image = ImageIO.read(getClass().getResourceAsStream("/Textures/tree.png"));
+            tile[4].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Textures/tree.png")));
 
             tile[5] = new Tile();
-            tile[5].image = ImageIO.read(getClass().getResourceAsStream("/Textures/grass.png"));
+            tile[5].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Textures/grass.png")));
 
-
-
-         //   tile[3] = new Tile();
-           // tile[3].image = ImageIO.read(getClass().getResourceAsStream("/Textures/tree.png"));
 
 
 
@@ -62,6 +59,7 @@ public class TileManager {
     public  void loadMap(){
         try {
             InputStream is = getClass().getResourceAsStream("/res/maps/map_01.txt");
+            assert is != null;
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
             int col = 0;
@@ -72,7 +70,7 @@ public class TileManager {
                 String line = br.readLine();
                 while (col < gp.maxWorldCol ){
 
-                    String numbers[] = line.split(" ");
+                    String[] numbers = line.split(" ");
 
                     int num = Integer.parseInt(numbers[col]);
 
@@ -88,8 +86,8 @@ public class TileManager {
 
             br.close();
 
-        }catch (Exception e){
-
+        }catch (Exception e) {
+            e.printStackTrace();
         }
     }
     public void draw(Graphics2D g2){
